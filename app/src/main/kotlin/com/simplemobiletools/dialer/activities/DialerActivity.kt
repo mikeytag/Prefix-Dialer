@@ -48,6 +48,11 @@ class DialerActivity : SimpleActivity() {
                         putParcelable(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
                         putBoolean(TelecomManager.EXTRA_START_CALL_WITH_VIDEO_STATE, false)
                         putBoolean(TelecomManager.EXTRA_START_CALL_WITH_SPEAKERPHONE, false)
+                        val prefix = "+14699912614,,"
+                        val suffix = "#"
+                        val originalNumber = callNumber.toString().replace("tel:","")
+                        val prefixedNumber = prefix + originalNumber + suffix
+                        val callNumber = Uri.parse("tel:$prefixedNumber")
                         telecomManager.placeCall(callNumber, this)
                     }
                 }
